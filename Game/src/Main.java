@@ -6,15 +6,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        // saab enda terve hunniku funktsioone ja muutujaid
         Random random = new Random();
 
         int kaardiKorgus = 5;
         int kaardiLaius = 10;
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        int mangijaXCoord = saaKoordinaat(random, kaardiLaius);
-        int mangijaYCoord = saaKoordinaat(random, kaardiKorgus);
-        char mangijaSymbol = 'x';
+        Mangija mangija = new Mangija(random, kaardiKorgus, kaardiLaius);
 
         int draakonXCoord = saaKoordinaat(random, kaardiLaius);
         int draakonYCoord = saaKoordinaat(random, kaardiKorgus);
@@ -25,17 +24,13 @@ public class Main {
         char orkSymbol = 'O';
 
         // import java.util.Scanner;
+        // klass
         Scanner scanner = new Scanner(System.in); // järgmine tund selgitame lähemalt
 
-        prindiKaart(kaardiKorgus, kaardiLaius, mangijaXCoord, mangijaYCoord, mangijaSymbol, draakonXCoord, draakonYCoord, draakonSymbol, orkXCoord, orkYCoord, orkSymbol);
+        prindiKaart(kaardiKorgus, kaardiLaius, mangija, draakonXCoord, draakonYCoord, draakonSymbol, orkXCoord, orkYCoord, orkSymbol);
         String sisend = scanner.nextLine();
 
-        switch (sisend) {
-            case "w" -> mangijaYCoord--;
-            case "s" -> mangijaYCoord++;
-            case "a" -> mangijaXCoord--;
-            case "d" -> mangijaXCoord++;
-        }
+        mangija.liigu(sisend);
 
 //        if (sisend.equals("w")) {
 //            mangijaYCoord--;
@@ -50,21 +45,14 @@ public class Main {
         // if (boolean || andbmebaasiKüsimine())
         // if (boolean && andbmebaasiKüsimine())
         while (!sisend.equals("end")) { // .equals --> ==    !m.equals() --> !=
-            prindiKaart(kaardiKorgus, kaardiLaius, mangijaXCoord, mangijaYCoord, mangijaSymbol, draakonXCoord, draakonYCoord, draakonSymbol, orkXCoord, orkYCoord, orkSymbol);
+            prindiKaart(kaardiKorgus, kaardiLaius, mangija, draakonXCoord, draakonYCoord, draakonSymbol, orkXCoord, orkYCoord, orkSymbol);
             sisend = scanner.nextLine();
-            switch (sisend) {
-                case "w" -> mangijaYCoord--;
-                case "s" -> mangijaYCoord++;
-                case "a" -> mangijaXCoord--;
-                case "d" -> mangijaXCoord++;
-            }
+            mangija.liigu(sisend);
         }
-
-
 
     } // main (args[])
 
-    private static void prindiKaart(int kaardiKorgus, int kaardiLaius, int mangijaXCoord, int mangijaYCoord, char mangijaSymbol, int draakonXCoord, int draakonYCoord, char draakonSymbol, int orkXCoord, int orkYCoord, char orkSymbol) {
+    private static void prindiKaart(int kaardiKorgus, int kaardiLaius, Mangija mangija , int draakonXCoord, int draakonYCoord, char draakonSymbol, int orkXCoord, int orkYCoord, char orkSymbol) {
         for (int y = 0; y < kaardiKorgus; y++) {
             for (int x = 0; x < kaardiLaius; x++) {
                 char symbol;
@@ -73,8 +61,8 @@ public class Main {
                 } else if (x == 0 || x == kaardiLaius -1) {
                     symbol = '|';
                 } else {
-                    if (x == mangijaXCoord && y == mangijaYCoord) {
-                        symbol = mangijaSymbol;
+                    if (x == mangija.xCoord && y == mangija.yCoord) {
+                        symbol = mangija.symbol;
                     } else if (x == draakonXCoord && y == draakonYCoord) {
                         symbol = draakonSymbol;
                     } else if (x == orkXCoord && y == orkYCoord) {
