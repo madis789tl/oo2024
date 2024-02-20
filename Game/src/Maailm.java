@@ -9,7 +9,7 @@ public class Maailm {
         kaardiLaius = laius;
     }
 
-    public void prindiKaart(Mangija mangija, Draakon draakon, Ork ork, List<Ese> esemed) {
+    public void prindiKaart(List<Tegelane> tegelased, List<Ese> esemed) {
         for (int y = 0; y < kaardiKorgus; y++) {
             for (int x = 0; x < kaardiLaius; x++) {
                 char symbol;
@@ -18,24 +18,22 @@ public class Maailm {
                 } else if (x == 0 || x == kaardiLaius -1) {
                     symbol = '|';
                 } else {
-                    if (x == mangija.xCoord && y == mangija.yCoord) {
-                        symbol = mangija.symbol;
-                    } else if (x == draakon.xCoord && y == draakon.yCoord) {
-                        symbol = draakon.symbol;
-                    } else if (x == ork.xCoord && y == ork.yCoord) {
-                        symbol = ork.symbol;
-                    } else  {
                         symbol = ' ';
                         for (Ese e : esemed) {
                             if (e.xCoord == x && e.yCoord == y) {
                                 symbol = e.symbol;
                             }
                         }
+                        for (Tegelane t : tegelased) {
+                            if (t.xCoord == x && t.yCoord == y) {
+                                symbol = t.symbol;
+                            }
+                        }
                         // fori
 //                        for (int i = 0; i < esemed.size(); i++) {
 //                            esemed.get(i);
 //                        }
-                    }
+
                 }
                 System.out.print(symbol);
             }

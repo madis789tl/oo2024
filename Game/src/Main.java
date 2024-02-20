@@ -15,9 +15,15 @@ public class Main {
         Maailm maailm = new Maailm(5, 10);
         System.out.println(maailm);
 
+        //Tegelane tegelane = new Tegelane();
+
         Mangija mangija = new Mangija(random, maailm.kaardiKorgus, maailm.kaardiLaius);
         Draakon draakon = new Draakon(random, maailm.kaardiKorgus, maailm.kaardiLaius);
         Ork ork = new Ork(random, maailm.kaardiKorgus, maailm.kaardiLaius);
+        List<Tegelane> tegelased = new ArrayList<>();
+        tegelased.add(mangija);
+        tegelased.add(draakon);
+        tegelased.add(ork);
 
         Ese m66k = new Ese("Mõõk", 10, 1, random, maailm);
         Ese haamer = new Ese("Haamer", 5, 3, random, maailm);
@@ -32,15 +38,24 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in); // järgmine tund selgitame lähemalt
 
-        maailm.prindiKaart(mangija, draakon, ork, esemed);
+        maailm.prindiKaart(tegelased, esemed);
         String sisend = scanner.nextLine();
 
         mangija.liigu(sisend, maailm);
 
         while (!sisend.equals("end")) { // .equals --> ==    !m.equals() --> !=
-            maailm.prindiKaart(mangija, draakon, ork, esemed);
+            maailm.prindiKaart(tegelased, esemed);
             sisend = scanner.nextLine();
             mangija.liigu(sisend, maailm);
+            for (Ese e: esemed) {
+                if (mangija.xCoord == e.xCoord && mangija.yCoord == e.yCoord) {
+                    mangija.ese = e;
+                    System.out.println("Korjasid üles eseme: " + e.nimetus);
+                    break;
+                }
+            }
+
+            // JavaScript: esemed.forEach(e => { if ( e.xCoord && e.yCoord)})
         }
 
     } // main (args[])
