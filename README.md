@@ -12,6 +12,10 @@ Versioon 15: https://www.enterprisedb.com/downloads/postgres-postgresql-download
 
 https://taltech-coding.gitlab.io/prog2/web/08_veebirakenduste_loomine.html
 
+Alates vahenädalast veebis. 10.15-13.45
+
+KT2 toimub ikka A406.
+
 Veebilink: https://meet.google.com/vin-pyqe-qxn
 
 Videod: https://drive.google.com/drive/folders/1qfkBzXmc6VwWSqHkeI4SMcPk_SfBvbuo?usp=sharing
