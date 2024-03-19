@@ -11,3 +11,5 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.2.3
 Versioon 15: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 
 https://taltech-coding.gitlab.io/prog2/web/08_veebirakenduste_loomine.html
+
+Veebilink: https://meet.google.com/vin-pyqe-qxn
