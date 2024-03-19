@@ -13,3 +13,5 @@ Versioon 15: https://www.enterprisedb.com/downloads/postgres-postgresql-download
 https://taltech-coding.gitlab.io/prog2/web/08_veebirakenduste_loomine.html
 
 Veebilink: https://meet.google.com/vin-pyqe-qxn
+
+Videod: https://drive.google.com/drive/folders/1qfkBzXmc6VwWSqHkeI4SMcPk_SfBvbuo?usp=sharing
