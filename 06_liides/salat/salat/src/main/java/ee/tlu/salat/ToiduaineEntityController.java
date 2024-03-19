@@ -23,6 +23,8 @@ public class ToiduaineEntityController {
     // ON järjekord tähtis
     // Ma võin kogemata sassi ajada, muutes järjekorda ja paneb valesti
     // Ma ei saa ühtegi vahele jätta
+
+    //localhost:8080/api/toiduained/Vorst/15/5/1
     @PostMapping("toiduained/{nimi}/{valk}/{rasv}/{sysivesik}")
     public List<ToiduaineEntity> lisaToiduaine(
             @PathVariable String nimi,
@@ -38,13 +40,23 @@ public class ToiduaineEntityController {
         return toiduained;
     }
 
+    @PostMapping("toiduained")
+    public List<ToiduaineEntity> lisaToiduaine(@RequestBody ToiduaineEntity toiduaineEntity) {
+        if (toiduaineEntity.valk + toiduaineEntity.rasv + toiduaineEntity.sysivesik > 100) {
+            return toiduained;
+        }
+        //ToiduaineEntity toiduaine = new ToiduaineEntity(nimi, valk, rasv, sysivesik);
+        toiduained.add(toiduaineEntity);
+        return toiduained;
+    }
+
     @DeleteMapping("toiduained/{index}")
     public List<ToiduaineEntity> kustutaToiduaine(@PathVariable int index) {
         toiduained.remove(index);
         return toiduained;
     }
 
-    // localhost:8080/api/toiduained/Vorst/15/5/1
+    // localhost:8080/api/toiduained/Vorst/15/5/1 <-- PathVariable näide
     // localhost:8080/api/toiduained?index=0&nimi=Vorst&valk=15&rasv=5&sysivesik=1
     @PutMapping("toiduained")
     public List<ToiduaineEntity> muudaToiduaine(
