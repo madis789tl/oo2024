@@ -13,10 +13,14 @@ NodeJS front-endi jaoks: https://nodejs.org/en
 
 https://taltech-coding.gitlab.io/prog2/web/08_veebirakenduste_loomine.html
 
-Alates vahenädalast veebis. 10.15-13.45
-
-KT2 toimub ikka A406.
-
 Veebilink: https://meet.google.com/vin-pyqe-qxn
 
 Videod: https://drive.google.com/drive/folders/1qfkBzXmc6VwWSqHkeI4SMcPk_SfBvbuo?usp=sharing
+
+Ajakava:
+09.04 veebis kell 10.15-13.45
+16.04 veebis kell 10.15-13.45
+23.04 A406 kell 12.30-15.45 (proovikontrolltöö 1)
+30.04 veebis kell 10.15-13.45 (proovikontrolltöö 2)
+07.05 A406 kell 12.15-15.45 (kontrolltöö 2)
+14.05 veebis kell 10.15-13.45 (seminar)
