@@ -19,9 +19,9 @@ Videod: https://drive.google.com/drive/folders/1qfkBzXmc6VwWSqHkeI4SMcPk_SfBvbuo
 
 Ajakava:
 
-09.04 veebis kell 10.15-13.45
+09.04 veebis kell 10.15-13.45 (klassikomplekt andmebaasis, custom Repository päringud)
 
-16.04 veebis kell 10.15-13.45
+16.04 veebis kell 10.15-13.45 (RestTemplate ehk päring teise rakendusse)
 
 23.04 A406 kell 12.30-15.45 (proovikontrolltöö 1)
 
