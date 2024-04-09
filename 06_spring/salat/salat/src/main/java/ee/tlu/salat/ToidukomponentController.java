@@ -1,9 +1,7 @@
 package ee.tlu.salat;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,20 @@ public class ToidukomponentController {
     // http://localhost:8080/toidukomponendid
     @GetMapping("toidukomponendid")
     public List<Toidukomponent> getToidukomponents() {
+        return toidukomponentRepository.findAll();
+    }
+
+    // --> PathVariable: http://localhost:8080/toidukomponendid/4
+    // RequestParam: http://localhost:8080/toidukomponendid?id=4
+    @DeleteMapping("toidukomponendid/{id}")
+    public List<Toidukomponent> deleteToidukomponent(@PathVariable Long id) {
+        toidukomponentRepository.deleteById(id);
+        return toidukomponentRepository.findAll();
+    }
+
+    @PostMapping("toidukomponendid")
+    public List<Toidukomponent> addToidukomponent(@RequestBody Toidukomponent toidukomponent) {
+        toidukomponentRepository.save(toidukomponent);
         return toidukomponentRepository.findAll();
     }
 
