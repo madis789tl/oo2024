@@ -3,10 +3,9 @@ import './App.css';
 
 function App() {
   const [tooted, setTooted] = useState([]);
-  // const nimiRef = useRef();
-  // const valkRef = useRef();
-  // const rasvRef = useRef();
-  // const sysivesikRef = useRef();
+  const nimiRef = useRef();
+  const hindRef = useRef();
+  const aktiivneRef = useRef();
 
   useEffect(() => {
     fetch("http://localhost:8080/tooted")
@@ -16,57 +15,52 @@ function App() {
       })
   }, []);
 
-  // function kustuta(primaarivoti) {
-  //   fetch("http://localhost:8080/api/toiduained/" + primaarivoti, {"method": "DELETE"})
-  //     .then(response => response.json()) 
-  //     .then(json => {
-  //       setKogus(json.length);
-  //       setToiduained(json);
-  //     })
-  // }
+  function kustuta(primaarivoti) {
+    fetch("http://localhost:8080/tooted/" + primaarivoti, {"method": "DELETE"})
+      .then(response => response.json()) 
+      .then(json => {
+        setTooted(json);
+      })
+  }
 
-  // function lisa() {
-  //   if (nimiRef.current.value.trim() === "") {
-  //     return;
-  //   }
-  //   const toiduaine = {
-  //     "nimetus": nimiRef.current.value,
-  //     "valk": valkRef.current.value,
-  //     "rasv": rasvRef.current.value,
-  //     "sysivesik": sysivesikRef.current.value
-  //   }
-  //   fetch("http://localhost:8080/api/toiduained", 
-  //   {
-  //     "method": "POST", 
-  //     "body": JSON.stringify(toiduaine), 
-  //     "headers": {"Content-Type": "application/json"}
-  //   })
-  //     .then(response => response.json()) 
-  //     .then(json => {
-  //       setKogus(json.length);
-  //       setToiduained(json);
-  //     })
-  // }
+  function lisa() {
+    if (nimiRef.current.value.trim() === "") {
+      return;
+    }
+    const toode = {
+      "nimi": nimiRef.current.value,
+      "hind": hindRef.current.value,
+      "aktiivne": aktiivneRef.current.checked // .checked kui on inputis checkbox
+    }
+    fetch("http://localhost:8080/tooted", 
+    {
+      "method": "POST", 
+      "body": JSON.stringify(toode), 
+      "headers": {"Content-Type": "application/json"}
+    })
+      .then(response => response.json()) 
+      .then(json => {
+        setTooted(json);
+      })
+  }
 
 
   return (
     <div className="App">
       <div>
         
-        {/* <label>Toiduaine nimi</label> <br/>
+        <label>Toote nimi</label> <br/>
         <input ref={nimiRef} type="text" /> <br />
-        <label>Toiduaine valk</label> <br/>
-        <input ref={valkRef} type="text" /> <br />
-        <label>Toiduaine rasv</label> <br/>
-        <input ref={rasvRef} type="text" /> <br />
-        <label>Toiduaine süsivesik</label> <br/>
-        <input ref={sysivesikRef} type="text" /> <br />
+        <label>Toote hind</label> <br/>
+        <input ref={hindRef} type="text" /> <br />
+        <label>Toote aktiivsus</label> <br/>
+        <input ref={aktiivneRef} type="checkbox" /> <br />
         <button onClick={() => lisa()}>Sisesta</button> <br />
-        <br /> */}
+        <br />
 
         {tooted.map(t => 
           <div>{t.id} | {t.nimi} | {t.hind} | {t.aktiivne + 0} 
-            {/* <button onClick={() => kustuta(t.nimetus)}>x</button>  */}
+            <button onClick={() => kustuta(t.id)}>x</button> 
           </div> )}
       </div>
     </div>

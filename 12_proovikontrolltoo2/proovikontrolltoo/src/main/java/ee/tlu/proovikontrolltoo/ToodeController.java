@@ -34,4 +34,14 @@ public class ToodeController {
         toodeRepository.deleteById(id);
         return toodeRepository.findAll();
     }
+
+    @GetMapping("toote-hind-vahemik/{min}/{max}")
+    public List<Toode> tooteHindVahemik(@PathVariable double min, @PathVariable double max) {
+        return toodeRepository.findByHindBetween(min, max);
+    }
+
+    @GetMapping("max-hinnaga-toode")
+    public Toode maxHinnagaToode() {
+        return toodeRepository.findFirstByHindNotNullOrderByHindDesc();
+    }
 }
